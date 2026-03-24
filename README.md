@@ -67,9 +67,9 @@ En arquitecturas distribuidas, los nodos deben ser stateless. El estado se exter
 
 A continuación se incluyen los diagramas de la arquitectura implementada:
 
-![Diagrama de arquitectura general](docs/arquitectura_general.png)
+![Diagrama de arquitectura general](img/Gemini_Generated_Image_92g24d92g24d92g2.png)
 
-![Flujo de balanceo de carga](docs/flujo_balanceo.png)
+![Flujo de balanceo de carga](img/arquitectura_moodle_separada.svg)
 
 Estos diagramas representan la distribución de componentes, el flujo de tráfico y el comportamiento del balanceador ante diferentes escenarios.
 
