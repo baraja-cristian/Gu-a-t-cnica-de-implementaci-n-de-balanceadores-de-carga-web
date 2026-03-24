@@ -67,9 +67,9 @@ En arquitecturas distribuidas, los nodos deben ser stateless. El estado se exter
 
 A continuación se incluyen los diagramas de la arquitectura implementada:
 
-![Diagrama de arquitectura general](img/Gemini_Generated_Image_92g24d92g24d92g2.png)
+![Diagrama de arquitectura general](docs/arquitectura_general.png)
 
-![Flujo de balanceo de carga](img/arquitectura_moodle_separada.svg)
+![Flujo de balanceo de carga](docs/flujo_balanceo.png)
 
 Estos diagramas representan la distribución de componentes, el flujo de tráfico y el comportamiento del balanceador ante diferentes escenarios.
 
@@ -77,55 +77,53 @@ Estos diagramas representan la distribución de componentes, el flujo de tráfic
 
 La arquitectura implementada sigue el siguiente flujo:
 
+````text
 Usuarios / Internet
-│
-▼
+        │
+        ▼
 NGINX (Balanceador de carga)
-│
-▼
+        │
+        ▼
 ┌───────────────────────────────┐
 │         Nodos Moodle          │
 │   ┌───────────┐ ┌───────────┐ │
 │   │  Nodo 1   │ │  Nodo 2   │ │
 │   └───────────┘ └───────────┘ │
 └───────────────────────────────┘
-│               │
-▼               ▼
-┌───────┐     ┌────────┐
-│ Redis │     │ MariaDB│
-└───────┘     └────────┘
-\           /
-\         /
-▼       ▼
-┌────────────┐
-│ NFS Server │
-└────────────┘
+        │               │
+        ▼               ▼
+     ┌───────┐     ┌────────┐
+     │ Redis │     │ MariaDB│
+     └───────┘     └────────┘
+          \           /
+           \         /
+            ▼       ▼
+         ┌────────────┐
+         │ NFS Server │
+         └────────────┘
+``` │
+         └────────────┘
 
 ### 3.2 Componentes
 
 NGINX:
-
-* Balanceador de carga
-* Reverse proxy
-* Manejo de failover
+- Balanceador de carga
+- Reverse proxy
+- Manejo de failover
 
 Moodle:
-
-* Aplicación web
-* Ejecutada en contenedores
+- Aplicación web
+- Ejecutada en contenedores
 
 Redis:
-
-* Manejo de sesiones
-* Caché de aplicación
+- Manejo de sesiones
+- Caché de aplicación
 
 MariaDB:
-
-* Base de datos central
+- Base de datos central
 
 NFS:
-
-* Almacenamiento compartido
+- Almacenamiento compartido
 
 ---
 
@@ -133,7 +131,7 @@ NFS:
 
 ### 4.1 Instalación de Docker Engine
 
-* Antes de poder instalar Docker Engine, se debe desinstalar todos los paquetes en conflicto.
+- Antes de poder instalar Docker Engine, se debe desinstalar todos los paquetes en conflicto.
 
 ```bash
 sudo dnf remove docker \
@@ -146,7 +144,7 @@ sudo dnf remove docker \
                   docker-engine \
                   podman \
                   runc
-```
+````
 
 * Configurar el repositorio
 
